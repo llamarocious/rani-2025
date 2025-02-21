@@ -1,0 +1,4 @@
+[build]
+  base = "frontend"  # This is the key!  Change to your frontend directory
+  command = "npm run build" # Or yarn build, or whatever your build command is
+  publish = "frontend/dist" # Or frontend/build, or whatever your build output directory is
