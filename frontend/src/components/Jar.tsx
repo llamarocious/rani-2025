@@ -1,11 +1,11 @@
 import React from 'react';
-import { Jar as JarType, Card as CardType } from '../types';
+import { Jar as JarType, Card } from '../types';
 import { canOpenToday, isCardOpened } from '../utils';
 
 interface JarProps {
   jar: JarType;
-  cards: CardType[];
-  onOpenCard: (card: CardType) => void;
+  cards: Card[];
+  onOpenCard: (card: Card) => void;
 }
 
 export const Jar: React.FC<JarProps> = ({ jar, cards, onOpenCard }) => {
@@ -13,33 +13,34 @@ export const Jar: React.FC<JarProps> = ({ jar, cards, onOpenCard }) => {
   const openedCount = jarCards.filter(card => isCardOpened(card.id)).length;
   const canOpen = canOpenToday();
 
+  const handleClick = () => {
+    if (!canOpen || openedCount === jarCards.length) return;
+    
+    const unopenedCards = jarCards.filter(card => !isCardOpened(card.id));
+    if (unopenedCards.length > 0) {
+      onOpenCard(unopenedCards[0]);
+    }
+  };
+
   return (
-    <div className={`${jar.color} rounded-lg p-6 shadow-lg transition-transform hover:scale-105`}>
-      <h2 className="text-2xl font-bold text-white mb-2">{jar.name}</h2>
-      <p className="text-white mb-4">{jar.description}</p>
-      <div className="flex justify-between items-center">
-        <span className="text-white">
-          {openedCount}/{jarCards.length} opened
-        </span>
-        <button
-          onClick={() => {
-            const unopenedCards = jarCards.filter(card => !isCardOpened(card.id));
-            if (unopenedCards.length > 0) {
-              onOpenCard(unopenedCards[0]);
-            }
-          }}
-          disabled={!canOpen || openedCount === jarCards.length}
-          className={`px-4 py-2 rounded-full bg-white text-gray-800 font-semibold
-            ${(!canOpen || openedCount === jarCards.length) 
-              ? 'opacity-50 cursor-not-allowed' 
-              : 'hover:bg-gray-100'}`}
-        >
-          {openedCount === jarCards.length 
-            ? 'All opened' 
-            : canOpen 
-              ? 'Open card' 
-              : 'Come back tomorrow'}
-        </button>
+    <div 
+      className={`${jar.bgColor} p-3 rounded-lg shadow-lg cursor-pointer 
+        transform transition-all duration-300 hover:scale-105 hover:shadow-xl
+        ${(!canOpen || openedCount === jarCards.length) ? 'opacity-50' : ''}`}
+      onClick={handleClick}
+    >
+      <div className="relative aspect-square">
+        <img 
+          src={jar.image} 
+          alt={jar.id} 
+          className="w-full  object-contain"
+        />
+        
+        {/* <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
+          <span className="bg-white text-black px-3 py-1 rounded-full text-sm font-medium shadow-md">
+            {openedCount}/{jarCards.length}
+          </span>
+        </div> */}
       </div>
     </div>
   );

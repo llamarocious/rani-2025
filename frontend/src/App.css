@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+@layer components {
+  .jar img {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .jar:hover img {
+    transform: scale(1.05);
+  }
+}

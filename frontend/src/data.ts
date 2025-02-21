@@ -3,51 +3,43 @@ import { Card, Jar } from './types';
 export const jars: Jar[] = [
   {
     id: 'happy',
-    name: 'When You\'re Happy',
-    description: 'For those moments of joy and celebration',
-    color: 'bg-yellow-500'
+    image: '../src/assets/jars/happy-jar.png',
+    bgColor: 'bg-yellow-200',
   },
   {
     id: 'sad',
-    name: 'When You\'re Sad',
-    description: 'To lift your spirits when you\'re feeling down',
-    color: 'bg-blue-500'
+    image: '../src/assets/jars/sad-jar.png',
+    bgColor: 'bg-blue-200',
   },
   {
     id: 'missing',
-    name: 'When You Miss Me',
-    description: 'For times when you need me close',
-    color: 'bg-pink-500'
+    image: '../src/assets/jars/missing-jar.png',
+    bgColor: 'bg-white',
   },
   {
     id: 'stressed',
-    name: 'When You\'re Stressed',
-    description: 'To help you relax and find peace',
-    color: 'bg-purple-500'
+    image: '../src/assets/jars/stressed-jar.png',
+    bgColor: 'bg-purple-200',
   },
   {
-    id: 'low-confidence',
-    name: 'When You\'re Low on Confidence',
-    description: 'For when you need reminding of your worth',
-    color: 'bg-purple-500'
+    id: 'doubtful',
+    image: '../src/assets/jars/doubtful-jar.png',
+    bgColor: 'bg-pink-200',
+  },
+  {
+    id: 'soso',
+    image: '../src/assets/jars/soso-jar.png',
+    bgColor: 'bg-gray-500',
   },
   {
     id: 'upsetwm',
-    name: 'When You\'re Upset with Me',
-    description: 'To help you be reminded that I\'m trying my best',
-    color: 'bg-orange-500'
+    image: '../src/assets/jars/upsetwm-jar.png',
+    bgColor: 'bg-orange-200',
   },
   {
     id: 'upsetwu',
-    name: 'When I\'m  Upset with You',
-    description: 'For times when I\'m the one who needs understanding',
-    color: 'bg-purple-500'
-  },
-  {
-    id: 'so-so',
-    name: 'When You\'re Feeling So-So',
-    description: 'For those in-between days',
-    color: 'bg-gray-500'
+    image: '../src/assets/jars/upsetwu-jar.png',
+    bgColor: 'bg-green-200',
   }
 ];
 
@@ -55,25 +47,49 @@ export const cards: Card[] = [
   {
     id: 'happy-1',
     jarId: 'happy',
-    title: 'Your Beautiful Smile',
+    bgColor: jars.find(jar => jar.id === 'happy')?.bgColor || 'default-color',
     content: 'Your smile lights up my world. Here\'s a reminder of how much joy you bring to my life...'
   },
   {
     id: 'sad-1',
     jarId: 'sad',
-    title: 'A Warm Hug',
-    content: 'I wish I could be there to hug you right now. Remember that this feeling will pass...'
+    bgColor: jars.find(jar => jar.id === 'sad')?.bgColor || 'default-color',
+    content: 'I wish I could be there to hug you right now. Remember that this feeling will pass...',
   },
   {
     id: 'missing-1',
     jarId: 'missing',
-    title: 'Our Favorite Memory',
-    content: 'Remember that time when we...'
+    bgColor: jars.find(jar => jar.id === 'missing')?.bgColor || 'default-color',
+    content: 'Remember that time when we...',
   },
   {
     id: 'stressed-1',
     jarId: 'stressed',
-    title: 'Take a Deep Breath',
-    content: 'Close your eyes, take a deep breath, and know that I believe in you...'
+    bgColor: jars.find(jar => jar.id === 'stressed')?.bgColor || 'default-color',
+    content: 'Close your eyes, take a deep breath, and know that I believe in you...',
+  },
+  {
+    id: 'doubtful-1',
+    jarId: 'doubtful',
+    bgColor: jars.find(jar => jar.id === 'doubtful')?.bgColor || 'default-color',
+    content: 'You are capable of so much more than you think. Believe in yourself...',
+  },
+  {
+    id: 'soso-1',
+    jarId: 'soso',
+    bgColor: jars.find(jar => jar.id === 'soso')?.bgColor || 'default-color',
+    content: 'It\'s okay to feel this way. Remember that I am here for you...',
+  },
+  {
+    id: 'upsetwm-1',
+    jarId: 'upsetwm',
+    bgColor: jars.find(jar => jar.id === 'upsetwm')?.bgColor || 'default-color',
+    content: 'I know you are upset. Let\'s talk about it...',
+  },
+  {
+    id: 'upsetwu-1',
+    jarId: 'upsetwu',
+    bgColor: jars.find(jar => jar.id === 'upsetwu')?.bgColor || 'default-color',
+    content: 'I may be upset, but I still love you...',
   }
 ];
